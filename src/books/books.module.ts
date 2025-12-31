@@ -7,6 +7,8 @@ import { Book } from './entities/book.entity';
 import { UsersModule } from 'src/users/users/users.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { OrdersModule } from 'src/orders/order.module';
+import { OrderModule } from 'src/queues/order/order.module';
+import { BullModule } from '@nestjs/bullmq';
 
 @Module({
   imports: [
@@ -24,7 +26,9 @@ import { OrdersModule } from 'src/orders/order.module';
 
     UsersModule,
     AuthModule,
-    OrdersModule
+    OrdersModule,
+    OrderModule,
+ 
 
   
   ],

@@ -10,4 +10,9 @@ export class OrdersService extends TypeOrmCrudService<Order> {
   constructor(@InjectRepository(Order) repo: Repository<Order>) {
     super(repo);
   }
+    // Add a public method to create order
+  async createOrder(data: Partial<Order>): Promise<Order> {
+    const order = this.repo.create(data); // creates entity instance
+    return this.repo.save(order); // saves to DB
+  }
 }

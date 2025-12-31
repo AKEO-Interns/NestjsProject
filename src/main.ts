@@ -6,14 +6,18 @@ import { BooksModule } from './books/books.module';
 
 async function bootstrap() {
 
-  const book = await NestFactory.create(BooksModule)
+  const book = await NestFactory.create(BooksModule, {
+    logger: ['log', 'error', 'warn', 'debug'],
+  })
  book.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
     }),
+    
   );
+
 
   await book.listen(process.env.PORT ?? 3000);
 
